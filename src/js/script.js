@@ -63,6 +63,7 @@
       thisProduct.initOrderForm();
       thisProduct.processOrder();      
     }
+  
     renderInMenu(){
       const thisProduct = this;
 
@@ -142,10 +143,9 @@
         thisProduct.processOrder();
         thisProduct.addToCart();
       });
-    }
-  }
+    }  
 
-  processOrder(){
+  processOrder() {
     const thisProduct = this;
 
     // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
@@ -182,22 +182,20 @@
     // update calculated price in the HTML
     thisProduct.priceElem.innerHTML = price;
   }
-
+}
     
   const app = {
-    initMenu: function() {
-      const testProduct = new Product();
-      const thisApp = this;
-      console.log('thisApp.data', thisApp.data);
-      for (let productData in thisApp.data.products){
-        new Product (productData, thisApp.data.products[productData]);
-      } 
-    },
 
     initData: function() {
       const thisApp = this;
-
       thisApp.data = dataSource;
+    },
+
+    initMenu: function() {
+      const thisApp = this;
+      for (let productData in thisApp.data.products){
+        new Product (productData, thisApp.data.products[productData]);
+      } 
     },
 
     init: function(){
