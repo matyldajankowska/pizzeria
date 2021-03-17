@@ -241,6 +241,11 @@
       thisProduct.priceElem.innerHTML = price;
     }
 
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct);
+    }
   }
 
   class AmountWidget {
@@ -272,8 +277,12 @@
         thisWidget.input.value = thisWidget.value;
         thisWidget.annouce();
       }
-    }
-
+    }    
+      add(menuProduct){
+        const thisCart = this;
+        console.log(menuProduct)
+      }
+    
     initActions() {
       const thisWidget = this;
       thisWidget.input.addEventListener('change', function() {
