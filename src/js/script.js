@@ -279,10 +279,10 @@
         const param = thisProduct.data.params[paramId];
 
         // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
-      params[paramId] = {
-      label: param.label,
-      options: {}
-      }
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
         // for every option in this category
         for (let optionId in param.options) {
         // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
@@ -365,7 +365,7 @@
       thisCart.products = [];
 
       thisCart.getElements(element);
-      thisCart.initActions()
+      thisCart.initActions();
     }
 
     getElements(element){
@@ -399,7 +399,7 @@
     initActions(){
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click' , function(){
-      thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
   }
