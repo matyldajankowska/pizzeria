@@ -275,14 +275,13 @@
         newValue <= settings.amountWidget.defaultMax) {
         thisWidget.value = newValue;
         thisWidget.input.value = thisWidget.value;
+        thisWidget.annouce();}
+      else {
+        thisWidget.input.value = settings.amountWidget.defaultValue;
         thisWidget.annouce();
       }
-    }    
-      add(menuProduct){
-        const thisCart = this;
-        console.log(menuProduct)
-      }
-    
+    }
+
     initActions() {
       const thisWidget = this;
       thisWidget.input.addEventListener('change', function() {
@@ -313,7 +312,6 @@
       thisCart.products = [];
 
       thisCart.getElements(element);
-      thisCart.initActions();
     }
 
     getElements(element){
@@ -325,6 +323,12 @@
 
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
     }
+
+    add(menuProduct){
+      //const thisCart = this;
+      console.log(menuProduct);
+    }
+    
 
     initActions(){
       const thisCart = this;
