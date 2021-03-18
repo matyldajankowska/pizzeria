@@ -280,7 +280,7 @@
 
         // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
       params[paramId] = {
-      name: param.label,
+      label: param.label,
       options: {}
       }
         // for every option in this category
