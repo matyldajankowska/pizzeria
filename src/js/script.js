@@ -390,6 +390,9 @@
       thisCart.dom.subTotalPrice = this.dom.wrapper.querySelector(select.cart.subtotalPrice);
       thisCart.dom.totalPrice = this.dom.wrapper.querySelector(select.cart.totalPrice);
       thisCart.dom.totalNumber = this.dom.wrapper.querySelector(select.cart.totalNumber);
+      thisCart.dom.form = this.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.phone = this.dom.wrapper.querySelector(select.cart.phone);
+      thisCart.dom.address = this.dom.wrapper.querySelector(select.cart.address);
     }
 
     add(menuProduct){
@@ -424,6 +427,11 @@
       thisCart.dom.productList.addEventListener('remove', function(event) {
         thisCart.remove(event.detail.cartProduct);
       });
+
+      thisCart.dom.form.addEventListener('sumbit', function(event){
+        event.preventDefault();
+        thisCart.sendOrder();
+      })
     } 
 
     update(){
@@ -461,6 +469,32 @@
       thisCart.products.splice(elementIndex, 1);
       cartProduct.dom.wrapper.remove();
       thisCart.update();
+    }
+    
+    sendOrder(){
+      const thisCart = this;
+      const url = settings.db.url + '/' + settings.db.order;
+      const payload = {
+        address: thisCart.dom.address['value'],
+        phone: thisCart.dom.phone['value'],
+        totalPrice: thisCart.totalPrice,
+        subTotalPrice: thisCart.subTotalPrice,
+        totalNumber: thisCart.totalNumber,
+        deliveryFee: thisCart.deliveryFee,
+        products: [],
+      }
+      for(let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+      
+      fetch(url, options);
     }
   }
 
@@ -526,6 +560,19 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
+
+    getData(){
+      const thisCartProduct = this;
+
+      const products = {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        priceSingle: thisCartProduct.priceSingle,
+        price: thisCartProduct.price,
+        params: thisCartProduct.params,
+      };    
+      return products; 
     }
   }
 
