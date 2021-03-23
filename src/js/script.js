@@ -431,7 +431,7 @@
       thisCart.dom.form.addEventListener('sumbit', function(event){
         event.preventDefault();
         thisCart.sendOrder();
-      })
+      });
     } 
 
     update(){
@@ -447,7 +447,8 @@
         thisCart.totalNumber += product.amount;
         thisCart.subTotalPrice += product.price;
       }
-      if (thisCart.totalPrice !== 0) {
+
+      if (thisCart.subTotalPrice !== 0) {
         thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
       }
       else {
@@ -458,7 +459,6 @@
       thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
       thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-      
     }
 
     remove(cartProduct){
@@ -482,7 +482,8 @@
         totalNumber: thisCart.totalNumber,
         deliveryFee: thisCart.deliveryFee,
         products: [],
-      }
+      };
+
       for(let prod of thisCart.products) {
         payload.products.push(prod.getData());
       }
@@ -555,7 +556,7 @@
       const event = new CustomEvent ('remove', {
         bubbles: true,
         detail: {
-          cartProduct: this.CartProduct,
+          cartProduct: thisCartProduct,
         },
       });
 
