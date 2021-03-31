@@ -85,11 +85,8 @@ class Cart{
       thisCart.subTotalPrice += product.price;
     }
 
-    thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
-
     if (thisCart.subTotalPrice !== 0) {
-      for (let totalPrice of thisCart.dom.totalPrice) {
-        totalPrice.innerHTML = thisCart.totalPrice; }
+      thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
     }
     else {
       thisCart.totalPrice = 0;
@@ -100,6 +97,9 @@ class Cart{
     thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
     thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
     thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+
+    for (let totalPrice of thisCart.dom.totalPrice) {
+      totalPrice.innerHTML = thisCart.totalPrice; }
   }
 
   remove(cartProduct){
