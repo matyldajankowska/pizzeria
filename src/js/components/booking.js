@@ -180,17 +180,15 @@ class Booking {
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       event.preventDefault();
       thisBooking.initTables(event);
-    })
+    });
   }
 
   initTables(event){
     if (event.target.offsetParent.classList.contains('table')){
-      
-      alert('ok')}
-      
-  
-  else {alert ('lipa')}
- }
+     
+
+      alarm('ok')}
+  }
 }
 
 

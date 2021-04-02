@@ -172,6 +172,7 @@
         opacity: 0.4;
       }
     }
+
     &.selected {
       color: lighten($color-dark, 40%);
 
@@ -185,9 +186,9 @@
         background: red;
         opacity: 0.4;
       }
+    }
   }
-
-  }
+  
   [data-table="1"] {
     left: 40px;
     top: 40px;
