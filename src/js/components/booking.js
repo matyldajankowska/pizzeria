@@ -185,11 +185,11 @@ class Booking {
 
   initTables(event){
     if (event.target.offsetParent.classList.contains('table')){
-      if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
-        alert('This table is not available. Please choose a different one');
-      }
       
-  }
+      alert('ok')}
+      
+  
+  else {alert ('lipa')}
  }
 }
 
