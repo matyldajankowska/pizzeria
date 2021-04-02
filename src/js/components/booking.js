@@ -11,6 +11,7 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.selectedPlace = '';
   }
 
   getData(){
@@ -158,6 +159,7 @@ class Booking {
     thisBooking.dom.datePicker = this.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = this.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector('.floor-plan');
   }
 
   initWidgets(){
@@ -175,7 +177,21 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updated', function() {
       thisBooking.updateDOM();
     });
+    thisBooking.dom.floorPlan.addEventListener('click', function(event){
+      event.preventDefault();
+      thisBooking.initTables(event);
+    })
   }
+
+  initTables(event){
+    if (event.target.offsetParent.classList.contains('table')){
+      if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
+        alert('This table is not available. Please choose a different one');
+      }
+      
+  }
+ }
 }
+
 
 export default Booking;
