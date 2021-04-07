@@ -89,7 +89,6 @@ class Booking {
         }
       }
     }
-    console.log('thisBooking.booked', thisBooking.booked);
     thisBooking.updateDOM();
   }
 
@@ -189,10 +188,10 @@ class Booking {
       thisBooking.initTables(event);
     });
     thisBooking.dom.form.addEventListener('submit', function(event){
-      event.preventDefault;
-      sendOrder();
-    })
-    
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
+  
   }
 
   initTables(event) {
@@ -202,7 +201,7 @@ class Booking {
 
     if(!clickedElement.classList.contains(classNames.booking.tableSelected)) {
       thisBooking.resTable = tableId;
-      console.log(thisBooking.resTable);
+    
     } else {
       alert('Table not available. Please choose a different one.');
     }
@@ -236,10 +235,11 @@ class Booking {
       address: thisBooking.dom.address.value,
     };
 
-    for(let starter of thisBooking.starters) {
+    for(let starter of thisBooking.dom.starters) {
       if(starter.checked === true){
-      reservation.starters.push(starter.value)};
+        reservation.starters.push(starter.value);}
     }
+
     const options = {
       method: 'POST',
       headers: {
@@ -249,8 +249,13 @@ class Booking {
     };
     
     fetch(url, options);
-  }
-};
 
+    for (let item in reservation){
+      thisBooking.makeBooked(item.date, utils.numberToHour(item.hour), item.duration, item.table);
+
+      location.reload();
+    }
+  }
+}
 
 export default Booking;
