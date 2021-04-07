@@ -1,5 +1,5 @@
 import {templates, select,} from './../settings.js';
-
+import {app} from '../app.js';
 
 
 class Home {
@@ -22,6 +22,10 @@ class Home {
     thisHome.dom.wrapper = wrapper;
     thisHome.dom.wrapper.innerHTML = generatedHTML;
 
+    thisHome.pages = document.querySelector(select.containerOf.pages).children;
+    thisHome.navLinks = document.querySelector(select.nav.links);
+    thisHome.dom.orderOnline = document.querySelector(select.home.orderButton);
+    thisHome.dom.bookTable = document.querySelector(select.home.bookButton);
   }
 
   initWidgets(){
@@ -40,12 +44,31 @@ class Home {
   }
 
   initActions(){
-    
+    const thisHome = this;
 
+    thisHome.dom.orderOnline.addEventListener('click', function(event){
+      event.preventDefault();
+      console.log('clicked!');
+    });
+
+    thisHome.dom.bookTable.addEventListener('click', function(event){
+      event.preventDefault();
+      console.log('clicked2!');
+    });
   }
 
   navigate(){
-  
+    const thisHome = this;
+
+    thisHome.dom.bookTable.addEventListener('click', function(){
+      app.activatePage('booking');
+      window.location.hash = '/#booking';
+    });
+
+    thisHome.dom.orderOnline.addEventListener('click', function(){
+      app.activatePage('order');
+      window.location.hash = '/#order';
+    });
   }
 }
 

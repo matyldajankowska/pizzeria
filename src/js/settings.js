@@ -69,6 +69,13 @@ export const select = {
     starters: '[name="starter]',
     floorPlan: '.floor-plan',
   },
+  home: {
+    orderButton: '.order-online',
+    bookButton: '.book-table',
+    openingHours: '.opening-hours',
+    mainOptions: '.main-options a'
+  },
+  
   nav: {
     links: '.main-nav a',
   },
@@ -121,7 +128,7 @@ export const settings = {
   },
   // CODE ADDED END
   db: {
-    url: '//localhost:3131',
+    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     product: 'product',
     order: 'order',
     booking: 'booking',
