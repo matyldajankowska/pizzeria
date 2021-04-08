@@ -75,6 +75,8 @@ export const select = {
     openingHours: '.opening-hours',
     mainOptions: '.main-options a'
   },
+
+  carousel: '.carousel-section',
   
   nav: {
     links: '.main-nav a',
