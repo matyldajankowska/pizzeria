@@ -1,17 +1,18 @@
 /* global Handlebars */
+
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
-    cartProduct: '#template-cart-product', // CODE ADDED
+    cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
-    homeWidget: '#template-home-widget',
+    homeWidget:  '#template-home-widget'
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
-    home: '.home-wrapper',
+    home: '.home-wrapper'
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -28,7 +29,7 @@ export const select = {
   },
   widgets: {
     amount: {
-      input: 'input.amount', // CODE CHANGED
+      input: 'input.amount',
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
@@ -41,8 +42,8 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
+    carousel: '.carousel-section',
   },
-  // CODE ADDED START
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -55,6 +56,12 @@ export const select = {
     phone: '[name="phone"]',
     address: '[name="address"]',
   },
+  home: {
+    orderButton: '.order-online',
+    bookButton: '.book-table',
+    openingHours: '.opening-hours',
+    mainOptions: '.main-options a'
+  },
   cartProduct: {
     amountWidget: '.widget-amount',
     price: '.cart__product-price',
@@ -66,22 +73,12 @@ export const select = {
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
     form: '.booking-form',
-    starters: '[name="starter]',
-    floorPlan: '.floor-plan',
+    starters: '[name="starter"]',
+    allTables: '.floor-plan',
   },
-  home: {
-    orderButton: '.order-online',
-    bookButton: '.book-table',
-    openingHours: '.opening-hours',
-    mainOptions: '.main-options a'
-  },
-
-  carousel: '.carousel-section',
-  
   nav: {
     links: '.main-nav a',
   },
-// CODE ADDED END
 };
 
 export const classNames = {
@@ -89,14 +86,13 @@ export const classNames = {
     wrapperActive: 'active',
     imageVisible: 'active',
   },
-  // CODE ADDED START
   cart: {
     wrapperActive: 'active',
   },
   booking: {
+    tableSelected: 'selected',
     loading: 'loading',
     tableBooked: 'booked',
-    tableSelected: 'selected',
     tableClicked: 'clicked',
   },
   nav: {
@@ -105,7 +101,6 @@ export const classNames = {
   pages: {
     active: 'active',
   },
-// CODE ADDED END
 };
 
 export const settings = {
