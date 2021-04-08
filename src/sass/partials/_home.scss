@@ -64,7 +64,7 @@
     background-image: url("./../../images/assets/pizza-2.jpg");
   }
 
-  .order-online:hover {
+  .order-online:hover, .book-table:hover {
     h2 {
       transform: translateY(-40px);
       opacity: 1;
