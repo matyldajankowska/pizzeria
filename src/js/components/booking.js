@@ -166,6 +166,7 @@ class Booking {
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.cart.address);
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.cart.phone);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+    thisBooking.dom.address.value = thisBooking.dom.wrapper.querySelector(select.cart.address.value);
   }
 
   initWidgets(){
@@ -223,7 +224,7 @@ class Booking {
   
   sendBooking(){
     const thisBooking = this;
-    const url = settings.db.url + '/' + settings.db.order;
+    const url = settings.db.url + '/' + settings.db.booking;
     const reservation = {
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
@@ -254,6 +255,8 @@ class Booking {
     }).then(function(parsedResponse){
       thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
       thisBooking.updateDOM();
+      thisBooking.dom.address.value = "";
+      thisBooking.dom.phone.value = "";
     });    
   }
 }
