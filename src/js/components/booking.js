@@ -257,7 +257,7 @@ class Booking {
         thisBooking.updateDOM();
         thisBooking.dom.form.reset();
       });    
-  };
-};
+  }
+}
 
 export default Booking;
