@@ -255,10 +255,9 @@ class Booking {
       }).then(function(parsedResponse){
         thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
         thisBooking.updateDOM();
-        thisBooking.dom.address.value = '';
-        thisBooking.dom.phone.value = '';
+        thisBooking.dom.form.reset();
       });    
-  }
-}
+  };
+};
 
 export default Booking;
